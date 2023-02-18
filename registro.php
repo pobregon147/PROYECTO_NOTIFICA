@@ -50,7 +50,7 @@ if (isset($_GET['mensaje'])) {
 }
 ?>
         </form>
-        <script src="modal.js"></script>ñ
+        <script src="modal.js"></script>
 </body>
 </html>
 
