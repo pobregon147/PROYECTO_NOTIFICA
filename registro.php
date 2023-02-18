@@ -63,14 +63,10 @@
             </select><br>
             </div>
       </div>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="submit" value="Registrar" class="btn btn-primary">Registrar</button>
       </form>
       </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="submit" value="Registrar" class="btn btn-primary">Registrar</button>
-      </div>
-
     </div>
   </div>
 </div>
