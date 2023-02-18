@@ -1,7 +1,7 @@
 <?php
 $serverName = "servidornotificaciones.database.windows.net";
 $database = "bdnotificaciones";
-$username = "administradrosql";
+$username = "administradorsql";
 $password = "5720805Po";
 
 // Conexión a la base de datos utilizando PDO
@@ -22,10 +22,11 @@ $genero = $_POST['genero'];
 
 // Insertar los datos en la base de datos
 try {
-    $sql = "INSERT INTO tabla_registro (nombre, apellido, email, telefono, edad, genero) 
+    $sql = "INSERT INTO registros (nombre, apellido, email, telefono, edad, genero) 
             VALUES ('$nombre', '$apellido', '$email', '$telefono', '$edad', '$genero')";
     $conn->exec($sql);
-    echo "Registro insertado correctamente";
+    // Redirigir al usuario a la página de registro y mostrar un mensaje de confirmación
+    header("Location: registro.php?mensaje=Registrado correctamente");
 } catch (PDOException $e) {
     echo "Error al insertar el registro: " . $e->getMessage();
 }
