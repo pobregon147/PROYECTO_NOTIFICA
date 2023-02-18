@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'notificacionesugel02'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B4F6942710D14D539484B51B55148D95 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_104F5D931B634390AABA0F292951341F }}
           package: .
