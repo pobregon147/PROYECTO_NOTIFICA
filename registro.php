@@ -23,34 +23,54 @@
       <div class="modal-body">
 
       <form method="post" action="procesar_registro.php">
+
+      <div class="form-row">
+            <div class="form-group col-md-6">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required><br>
-            
+            </div>
+
+            <div class="form-group col-md-6">
             <label for="apellido">Apellido:</label>
             <input type="text" id="apellido" name="apellido" required><br>
-            
+            </div>
+      </div>
+
+      <div class="form-row">        
+            <div class="form-group col-md-6">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required><br>
-            
+            </div>
+
+            <div class="form-group col-md-6">
             <label for="telefono">Teléfono:</label>
             <input type="tel" id="telefono" name="telefono" required><br>
-            
+            </div>
+      </div>    
+
+      <div class="form-row"> 
+            <div class="form-group col-md-6">
             <label for="edad">Edad:</label>
             <input type="number" id="edad" name="edad" required><br>
-            
+            </div>
+
+            <div class="form-group col-md-6">
             <label for="genero">Género:</label>
             <select id="genero" name="genero">
                 <option value="masculino">Masculino</option>
                 <option value="femenino">Femenino</option>
                 <option value="otro">Otro</option>
             </select><br>
-            <input type="submit" value="Registrar">
-
+            </div>
       </div>
+      </form>
+      </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar cambios</button>
+        <button type="submit" value="Registrar" class="btn btn-primary">Registrar</button>
       </div>
+
     </div>
   </div>
 </div>
