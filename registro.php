@@ -75,6 +75,7 @@
 </div>
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modaldatos">Registrar datos</button>
+
 <div class="modal fade" id="modaldatos" tabindex="-1" role="dialog" aria-labelledby="miModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -87,10 +88,10 @@
       <div class="modal-body">
 
       <form method="post" action="procesar_datos.php">
-        
+
       <div class="form-row">
             <div class="form-group col-md-6">
-            <?php $query = "SELECT * FROM usuarios"; 
+            <?php $query = "SELECT * FROM registros"; 
             $resultado = mysqli_query($conexion, $query); ?>  
             <label for="id">ID:</label>
             <input type="text" id="id" name="id" required><br>
