@@ -9,9 +9,9 @@
 </head>
 <body>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#miModal">Registrar usuario</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalusuario">Registrar usuario</button>
 
-<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="miModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalusuario" tabindex="-1" role="dialog" aria-labelledby="miModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -56,10 +56,11 @@
 
             <div class="form-group col-md-6">
             <label for="genero">Género:</label>
-            <select id="genero" name="genero">
-                <option value="masculino">Masculino</option>
-                <option value="femenino">Femenino</option>
-                <option value="otro">Otro</option>
+            <select id="genero" name="genero" class="form-control">
+              <option selected>Choose...</option>
+              <option value="masculino">Masculino</option>
+              <option value="femenino">Femenino</option>
+              <option value="otro">Otro</option>
             </select><br>
             </div>
       </div>
@@ -71,12 +72,53 @@
   </div>
 </div>
 
-<?php if (isset($_GET['mensaje'])) {echo "<p>" . $_GET['mensaje'] . "</p>";}?>
-<!-- Incluir jQuery y Bootstrap.js antes de cerrar el body -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modaldatos">Registrar datos</button>
+<div class="modal fade" id="modaldatos" tabindex="-1" role="dialog" aria-labelledby="miModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="miModalLabel">Registrar datos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      <form method="post" action="procesar_datos.php">
+
+      <div class="form-row">
+            <div class="form-group col-md-6">
+            <label for="direccion">Direccion:</label>
+            <input type="text" id="direccion" name="direccion" required><br>
+            </div>
+
+            <div class="form-group col-md-6">
+            <label for="distrito">Distrito:</label>
+            <input type="text" id="distrito" name="distrito" required><br>
+            </div>
+      </div>
+
+      <div class="form-row">        
+            <div class="form-group col-md-6">
+            <label for="fecha">Fecha de Nacimiento:</label>
+            <input type="date" id="fecha" name="fecha" required><br>
+            </div>
+
+            <div class="form-group col-md-6">
+            <label for="comentario">Comentario:</label>
+            <input type="text" id="comentario" name="comentario" required><br>
+            </div>
+      </div>    
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="submit" value="Registrar" class="btn btn-primary">Registrar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-<!-- Incluir tu código JavaScript para mostrar el modal -->
 
 </body>
 </html>
