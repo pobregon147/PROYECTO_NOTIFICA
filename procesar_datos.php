@@ -13,22 +13,20 @@ try {
 }
 
 // Obtener los datos del formulario
-$nombre = $_POST['nombre'];
-$apellido = $_POST['apellido'];
-$email = $_POST['email'];
-$telefono = $_POST['telefono'];
-$edad = $_POST['edad'];
-$genero = $_POST['genero'];
+$id = $_POST['id'];
+$direccion = $_POST['direccion'];
+$distrito = $_POST['distrito'];
+$fecha = $_POST['fecha'];
+$comentario = $_POST['comentario'];
 
 // Insertar los datos en la base de datos
 try {
-    $sql = "INSERT INTO registros (nombre, apellido, email, telefono, edad, genero) 
-            VALUES ('$nombre', '$apellido', '$email', '$telefono', '$edad', '$genero')";
+    $sql = "UPDATE registros SET direccion=$direccion, distrito=$distrito, fecha_nacimiento=$fecha, comentario=$comentario WHERE id=$id";
     $conn->exec($sql);
     // Redirigir al usuario a la página de registro y mostrar un mensaje de confirmación
-    header("Location: registro.php?mensaje=Registrado correctamente");
+    header("Location: registro.php?mensaje=Datos Registrados");
 } catch (PDOException $e) {
-    echo "Error al insertar el registro: " . $e->getMessage();
+    echo "Error al insertar el dato: " . $e->getMessage();
 }
 
 // Cerrar la conexión a la base de datos

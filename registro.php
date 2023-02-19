@@ -64,9 +64,11 @@
             </select><br>
             </div>
       </div>
+
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             <button type="submit" value="Registrar" class="btn btn-primary">Registrar</button>
-      </form>
+        
+       </form>
       </div>
     </div>
   </div>
@@ -85,8 +87,7 @@
       <div class="modal-body">
 
       <form method="post" action="procesar_datos.php">
-      <input type="hidden" name="action" value="addCliente">
-      <input type="hidden" id="id" value="1" name="id" required>
+        
       <div class="form-row">
             <div class="form-group col-md-6">
             <?php $query = "SELECT * FROM usuarios"; 
@@ -100,9 +101,9 @@
               <div class="input-group-prepend">
               <span class="input-group-text">Usuario:</span>
               </div>
-              <input type="text" id="nombre" name="nombre" class="form-control" required >
+              <input type="text" id="nombre" name="nombre" class="form-control" disabled required >
               <?php echo $fila['nombres']; ?>
-              <input type="text" id="apellido" name="apellido" class="form-control" required ><br>
+              <input type="text" id="apellido" name="apellido" class="form-control" disabled required ><br>
               <?php echo $fila['apellidos']; ?>
             </div>
             <?php endwhile; ?>
