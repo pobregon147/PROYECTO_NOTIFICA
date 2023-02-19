@@ -85,20 +85,27 @@
       <div class="modal-body">
 
       <form method="post" action="procesar_datos.php">
-
+      <input type="hidden" name="action" value="addCliente">
+      <input type="hidden" id="id" value="1" name="id" required>
       <div class="form-row">
             <div class="form-group col-md-6">
+            <?php $query = "SELECT * FROM usuarios"; 
+            $resultado = mysqli_query($conexion, $query); ?>  
             <label for="id">ID:</label>
             <input type="text" id="id" name="id" required><br>
+            <?php while ($fila = mysqli_fetch_assoc($resultado)): ?>
             </div><br>
 
             <div class="input-group">
               <div class="input-group-prepend">
               <span class="input-group-text">Usuario:</span>
               </div>
-              <input type="text" id="nombre" name="nombre" required class="form-control">
-              <input type="text" id="apellido" name="apellido" required class="form-control"><br>
+              <input type="text" id="nombre" name="nombre" class="form-control" required >
+              <?php echo $fila['nombres']; ?>
+              <input type="text" id="apellido" name="apellido" class="form-control" required ><br>
+              <?php echo $fila['apellidos']; ?>
             </div>
+            <?php endwhile; ?>
       </div>
 
       <div class="form-row">
