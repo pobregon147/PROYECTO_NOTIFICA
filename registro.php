@@ -90,16 +90,14 @@
             <div class="form-group col-md-6">
             <label for="id">ID:</label>
             <input type="text" id="id" name="id" required><br>
-            </div>
+            </div><br>
 
-            <div class="form-group col-md-6">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                <span class="input-group-text">Nombres y Apellidos:</span>
-                </div>
-                <input type="text" id="nombre" name="nombre" required class="form-control">
-                <input type="text" id="apellido" name="apellido" required class="form-control">
-              </div><br>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text">Nombres y Apellidos:</span>
+              </div>
+              <input type="text" id="nombre" name="nombre" required class="form-control">
+              <input type="text" id="apellido" name="apellido" required class="form-control"><br>
             </div>
       </div>
 
