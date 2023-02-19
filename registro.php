@@ -94,7 +94,7 @@
 
             <div class="input-group">
               <div class="input-group-prepend">
-              <span class="input-group-text">Nombres y Apellidos:</span>
+              <span class="input-group-text">Usuario:</span>
               </div>
               <input type="text" id="nombre" name="nombre" required class="form-control">
               <input type="text" id="apellido" name="apellido" required class="form-control"><br>
