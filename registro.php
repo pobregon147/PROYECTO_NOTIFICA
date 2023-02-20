@@ -74,7 +74,7 @@
   </div>
 </div>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="modaldatos">Registrar datos</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modaldatos">Registrar datos</button>
 
 <div class="modal fade" id="modaldatos" tabindex="-1" role="dialog" aria-labelledby="miModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -91,11 +91,11 @@
 
       <div class="form-row">
             <div class="form-group col-md-6">
-            <?php $query = "SELECT * FROM registros"; 
-            $resultado = mysqli_query($conexion, $query); ?>  
             <label for="id">ID:</label>
-            <input type="text" id="id" name="id" required><br>
-            <?php while ($fila = mysqli_fetch_assoc($resultado)): ?>
+            <input type="text" id="id" name="id" required>
+            </div>
+            <div class="form-group col-md-6">
+            <button type="button" class="btn btn-primary" onclick="buscarNombre()">Buscar</button>
             </div><br>
 
             <div class="input-group">
@@ -103,11 +103,8 @@
               <span class="input-group-text">Usuario:</span>
               </div>
               <input type="text" id="nombre" name="nombre" class="form-control" disabled required >
-              <?php echo $fila['nombre']; ?>
               <input type="text" id="apellido" name="apellido" class="form-control" disabled required ><br>
-              <?php echo $fila['apellido']; ?>
             </div>
-            <?php endwhile; ?>
       </div>
 
       <div class="form-row">
@@ -144,6 +141,24 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+<script>
+function buscarNombre() {
+  var id = document.getElementById("id").value;
+  if (id == "") {
+    alert("Por favor ingrese un ID");
+    return;
+  }
+  $.ajax({
+    url: "buscar_nombre.php?id=" + id,
+    success: function(resultado) {
+      var nombre = resultado.nombre;
+      var apellido = resultado.apellido;
+      document.getElementById("nombre").value = nombre;
+      document.getElementById("apellido").value = apellido;
+    }
+  });
+}
+</script>
 
 </body>
 </html>
