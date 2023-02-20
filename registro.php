@@ -91,11 +91,8 @@
 
       <div class="form-row">
             <div class="form-group col-md-6">
-            <?php $query = "SELECT * FROM registros"; 
-            $resultado = mysqli_query($conexion, $query); ?>  
             <label for="id">ID:</label>
-            <input type="text" id="id" name="id" required><br>
-            <?php while ($fila = mysqli_fetch_assoc($resultado)): ?>
+            <input type="text" id="id" name="id" required>
             </div><br>
 
             <div class="input-group">
@@ -103,11 +100,8 @@
               <span class="input-group-text">Usuario:</span>
               </div>
               <input type="text" id="nombre" name="nombre" class="form-control" disabled required >
-              <?php echo $fila['nombre']; ?>
               <input type="text" id="apellido" name="apellido" class="form-control" disabled required ><br>
-              <?php echo $fila['apellido']; ?>
             </div>
-            <?php endwhile; ?>
       </div>
 
       <div class="form-row">
