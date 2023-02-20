@@ -93,6 +93,9 @@
             <div class="form-group col-md-6">
             <label for="id">ID:</label>
             <input type="text" id="id" name="id" required>
+            </div>
+            <div class="form-group col-md-6">
+            <button type="button" class="btn btn-primary" onclick="buscarNombre()">Buscar</button>
             </div><br>
 
             <div class="input-group">

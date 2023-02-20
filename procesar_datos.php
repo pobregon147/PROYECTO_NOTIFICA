@@ -21,7 +21,8 @@ $comentario = $_POST['comentario'];
 
 // Insertar los datos en la base de datos
 try {
-    $sql = "UPDATE registros SET direccion=$direccion, distrito=$distrito, fecha_nacimiento=$fecha, comentario=$comentario WHERE id=$id";
+    $comentario = str_replace("'", "\'", $comentario);
+    $sql = "UPDATE registros SET direccion='$direccion', distrito='$distrito', fecha_nacimiento='$fecha', comentario='$comentario' WHERE id=$id";
     $conn->exec($sql);
     // Redirigir al usuario a la página de registro y mostrar un mensaje de confirmación
     header("Location: registro.php?mensaje=Datos Registrados");
