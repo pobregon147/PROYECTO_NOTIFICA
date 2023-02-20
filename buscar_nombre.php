@@ -8,7 +8,6 @@ $password = "5720805Po";
 // Conexión a la base de datos utilizando PDO
 try {
     $conn = new PDO("sqlsrv:server=$serverName;database=$database", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $statement = $conexion->prepare("SELECT nombre, apellido FROM registros WHERE id = $id");
     $statement->bindParam("id", $id);
     $statement->execute();
