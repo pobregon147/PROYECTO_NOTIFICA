@@ -12,6 +12,12 @@ try {
     echo "Error al conectar a la base de datos: " . $e->getMessage();
 }
 
+if (isset($_POST['funcion']) && $_POST['funcion'] == 'buscarNombre') {
+    $id = $_POST['id'];
+    buscarNombre($id);
+}
+
+
 // Obtener los datos del formulario
 $id = $_POST['id'];
 $direccion = $_POST['direccion'];

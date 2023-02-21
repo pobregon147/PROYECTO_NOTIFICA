@@ -1,3 +1,38 @@
+<?php
+function buscarNombre($id) {
+  try {
+      $serverName = "servidornotificaciones.database.windows.net";
+      $database = "bdnotificaciones";
+      $username = "administradorsql";
+      $password = "5720805Po";
+
+      $conn = new PDO("sqlsrv:server=$serverName;database=$database", $username, $password);
+
+      $sql = "SELECT nombre, apellido FROM registros WHERE id = :id";
+      $stmt = $conn->prepare($sql);
+      $stmt->bindParam(':id', $id);
+      $stmt->execute();
+
+      $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+      if ($result) {
+          $nombre = $result['nombre'];
+          $apellido = $result['apellido'];
+
+          echo "<script>
+              document.getElementById('nombre').value = '$nombre';
+              document.getElementById('apellido').value = '$apellido';
+          </script>";
+      } else {
+          echo "<script>alert('No se encontró ningún usuario con ese ID.');</script>";
+      }
+  } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -141,23 +176,27 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
 <script>
-function buscarNombre() {
-  var id = document.getElementById("id").value;
-  if (id == "") {
-    alert("Por favor ingrese un ID");
-    return;
-  }
-  $.ajax({
-    url: "buscar_nombre.php?id=" + id,
-    success: function(resultado) {
-      var nombre = resultado.nombre;
-      var apellido = resultado.apellido;
-      document.getElementById("nombre").value = nombre;
-      document.getElementById("apellido").value = apellido;
+  function buscarNombre() {
+    var id = document.getElementById('id').value;
+
+    if (id != '') {
+        // Llama a la función buscarNombre en PHP
+        $.ajax({
+            type: "POST",
+            url: "procesar_datos.php",
+            data: { id: id, funcion: "buscarNombre" },
+            success: function(response) {
+                // Muestra la respuesta de PHP
+                $("#resultado").html(response);
+            }
+        });
+    } else {
+        alert("Por favor, ingresa un ID.");
     }
-  });
 }
+
 </script>
 
 </body>
