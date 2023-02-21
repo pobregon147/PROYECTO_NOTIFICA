@@ -1,40 +1,4 @@
 <?php
-function buscarNombre($id) {
-  try {
-      $serverName = "servidornotificaciones.database.windows.net";
-      $database = "bdnotificaciones";
-      $username = "administradorsql";
-      $password = "5720805Po";
-
-      $conn = new PDO("sqlsrv:server=$serverName;database=$database", $username, $password);
-
-      $sql = "SELECT nombre, apellido FROM registros WHERE id = :id";
-      $stmt = $conn->prepare($sql);
-      $stmt->bindParam(':id', $id);
-      $stmt->execute();
-
-      $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-      if ($result) {
-          $nombre = $result['nombre'];
-          $apellido = $result['apellido'];
-
-          echo "<script>
-              document.getElementById('nombre').value = '$nombre';
-              document.getElementById('apellido').value = '$apellido';
-          </script>";
-      } else {
-          echo "<script>alert('No se encontró ningún usuario con ese ID.');</script>";
-      }
-  } catch (PDOException $e) {
-      echo "Error: " . $e->getMessage();
-  }
-}
-
-?>
-
-
-<?php
 $serverName = "servidornotificaciones.database.windows.net";
 $database = "bdnotificaciones";
 $username = "administradorsql";
@@ -47,12 +11,6 @@ try {
 } catch (PDOException $e) {
     echo "Error al conectar a la base de datos: " . $e->getMessage();
 }
-
-if (isset($_POST['funcion']) && $_POST['funcion'] == 'buscarNombre') {
-    $id = $_POST['id'];
-    buscarNombre($id);
-}
-
 
 // Obtener los datos del formulario
 $id = $_POST['id'];
