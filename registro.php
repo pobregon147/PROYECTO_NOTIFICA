@@ -102,8 +102,8 @@
               <div class="input-group-prepend">
               <span class="input-group-text">Usuario:</span>
               </div>
-              <input type="text" id="nombre" name="nombre" class="form-control" disabled required >
-              <input type="text" id="apellido" name="apellido" class="form-control" disabled required ><br>
+              <input type="text" id="nombre" name="nombre" class="form-control" required >
+              <input type="text" id="apellido" name="apellido" class="form-control" required ><br>
             </div>
       </div>
 
