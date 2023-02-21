@@ -28,7 +28,7 @@ try {
     // Redirigir al usuario a la página de registro y mostrar un mensaje de confirmación
     header("Location: registro.php?mensaje=Registrado correctamente");
 } catch (PDOException $e) {
-    echo "Error al insertar el registro: " . $e->getMessage();
+    echo "Error al insertar el regiñstro: " . $e->getMessage();
 }
 
 // Cerrar la conexión a la base de datos
