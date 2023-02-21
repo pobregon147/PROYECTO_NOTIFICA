@@ -26,5 +26,5 @@ $datos_usuario = $statement->fetch(PDO::FETCH_ASSOC);
 echo json_encode($datos_usuario);
 
 // Cerrar la conexión a la base de datos
-$conexion = null;
+$conn = null;
 ?>
