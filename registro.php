@@ -170,6 +170,10 @@ try {
             <th>GENERO</th>
             <th>EMAIL</th>
             <th>TELEFONO</th>
+<<<<<<< HEAD
+=======
+            <th>EMAIL</th>
+>>>>>>> e751686410bb73a79418c66678eb20b8e72b32cc
             <th>COMENTARIO</th>
         </tr>
     </thead>
