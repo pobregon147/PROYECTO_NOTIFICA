@@ -182,7 +182,7 @@ try {
                 <td><?= $registro['direccion'] ?></td>
                 <td><?= $registro['distrito'] ?></td>
                 <td><?= $registro['edad'] ?></td>
-                <td><?= date('d-b-Y', strtotime($registro['fecha_nacimiento'])) ?></td>
+                <td><?= date('d-M-Y', strtotime($registro['fecha_nacimiento'])) ?></td>
                 <td><?= $registro['genero'] ?></td>
                 <td><?= $registro['email'] ?></td>
                 <td><?= $registro['telefono'] ?></td>
