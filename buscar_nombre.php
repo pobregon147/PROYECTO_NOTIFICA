@@ -16,7 +16,7 @@ try {
 $id = $_POST["id"];
 
 // Consultar la base de datos para obtener el nombre y apellido del usuario con el ID especificado
-$query = "SELECT nombre, apellido FROM usuarios WHERE id = :id";
+$query = "SELECT nombre, apellido FROM registros WHERE id = :id";
 $statement = $conn->prepare($query);
 $statement->bindParam(':id', $id);
 $statement->execute();
