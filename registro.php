@@ -163,7 +163,15 @@ try {
             <th>ID</th>
             <th>Nombre</th>
             <th>Apellido</th>
-            <th>Fecha de nacimiento</th>
+            <th>DIRECCION</th>
+            <th>DISTRITO</th>
+            <th>EDAD</th>
+            <th>FECHA DE NACIMIENTO</th>
+            <th>GENERO</th>
+            <th>EMAIL</th>
+            <th>TELEFONO</th>
+            <th>EMAIL</th>
+            <th>COMENTARIO</th>
         </tr>
     </thead>
     <tbody>
@@ -172,7 +180,14 @@ try {
                 <td><?= $registro['id'] ?></td>
                 <td><?= $registro['nombre'] ?></td>
                 <td><?= $registro['apellido'] ?></td>
+                <td><?= $registro['direccion'] ?></td>
+                <td><?= $registro['distrito'] ?></td>
+                <td><?= $registro['edad'] ?></td>
                 <td><?= $registro['fecha_nacimiento'] ?></td>
+                <td><?= $registro['genero'] ?></td>
+                <td><?= $registro['email'] ?></td>
+                <td><?= $registro['telefono'] ?></td>
+                <td><?= $registro['comentario'] ?></td>
             </tr>
         <?php endforeach ?>
     </tbody>
