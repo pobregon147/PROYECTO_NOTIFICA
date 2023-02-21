@@ -1,3 +1,22 @@
+<?php
+try {
+    $serverName = "servidornotificaciones.database.windows.net";
+    $database = "bdnotificaciones";
+    $username = "administradorsql";
+    $password = "5720805Po";
+
+    $conn = new PDO("sqlsrv:server=$serverName;database=$database", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $stmt = $conn->query("SELECT * FROM registros");
+    $registros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,6 +156,27 @@
     </div>
   </div>
 </div>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de nacimiento</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($registros as $registro): ?>
+            <tr>
+                <td><?= $registro['id'] ?></td>
+                <td><?= $registro['nombre'] ?></td>
+                <td><?= $registro['apellido'] ?></td>
+                <td><?= $registro['fecha_nacimiento'] ?></td>
+            </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
