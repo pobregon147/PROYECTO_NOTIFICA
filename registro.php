@@ -157,9 +157,9 @@ try {
   </div>
 </div>
 
-<input type="text" id="searchInput" placeholder="Buscar por nombre"><br>
+<input type="text" id="search-input" placeholder="Buscar por nombre"><br>
 
-<table id="searchResults">
+<table id="search-results">
     <thead>
         <tr>
             <th>ID</th>
