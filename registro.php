@@ -157,7 +157,9 @@ try {
   </div>
 </div>
 
-<table>
+<input type="text" id="searchInput" placeholder="Buscar por nombre"><br>
+
+<table id="searchResults">
     <thead>
         <tr>
             <th>ID</th>
@@ -195,6 +197,28 @@ try {
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+<script>
+// Obtenemos el input y el div donde se mostrarán los resultados
+const searchInput = document.getElementById('search-input');
+const searchResults = document.getElementById('search-results');
+
+// Añadimos un listener al input para que se ejecute una función cuando se escriba algo
+searchInput.addEventListener('input', function() {
+  // Obtenemos el valor del input
+  const searchValue = searchInput.value;
+
+  // Hacemos una solicitud AJAX al archivo que busca en la base de datos
+  const xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+      // Mostramos los resultados en el div correspondiente
+      searchResults.innerHTML = this.responseText;
+    }
+  };
+  xhr.open('GET', 'buscar_usuario.php?q=' + searchValue, true);
+  xhr.send();
+});
+</script>
 
 </body>
 </html>
