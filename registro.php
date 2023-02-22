@@ -76,7 +76,7 @@ try {
             <div class="form-group col-md-6">
             <label for="genero">Género:</label>
             <select id="genero" name="genero" class="form-control">
-              <option selected>Choose...</option>
+              <option selected>Selecciona</option>
               <option value="masculino">Masculino</option>
               <option value="femenino">Femenino</option>
               <option value="otro">Otro</option>
@@ -157,7 +157,9 @@ try {
   </div>
 </div>
 
-<table>
+<input type="text" id="searchInput" placeholder="Buscar por nombre"><br>
+
+<table id="searchResults">
     <thead>
         <tr>
             <th>ID</th>
@@ -170,7 +172,6 @@ try {
             <th>GENERO</th>
             <th>EMAIL</th>
             <th>TELEFONO</th>
-            <th>EMAIL</th>
             <th>COMENTARIO</th>
         </tr>
     </thead>
@@ -183,7 +184,7 @@ try {
                 <td><?= $registro['direccion'] ?></td>
                 <td><?= $registro['distrito'] ?></td>
                 <td><?= $registro['edad'] ?></td>
-                <td><?= $registro['fecha_nacimiento'] ?></td>
+                <td><?= date('d-M-Y', strtotime($registro['fecha_nacimiento'])) ?></td>
                 <td><?= $registro['genero'] ?></td>
                 <td><?= $registro['email'] ?></td>
                 <td><?= $registro['telefono'] ?></td>
@@ -196,6 +197,26 @@ try {
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function() {
+  // Escuchar cambios en el input de búsqueda
+  $('#searchInput').on('keyup', function() {
+    // Obtener el valor actual del input
+    var searchValue = $(this).val();
+
+    // Realizar una solicitud AJAX para buscar en la base de datos
+    $.ajax({
+      url: 'buscar.php',
+      type: 'post',
+      data: { searchValue: searchValue },
+      success: function(response) {
+        // Actualizar la tabla con los resultados de la búsqueda
+        $('#searchResults tbody').html(response);
+      }
+    });
+  });
+});
+</script>
 
 </body>
 </html>
