@@ -222,24 +222,27 @@ input.addEventListener("keyup", function() {
   }
 });
 </script>
-<SCript>
+<script>
 function buscarNombre() {
-    var id = $("#id").val();
-    $.ajax({
-        type: "POST",
-        url: "buscar_nombre_apellido.php",
-        data: {id: id},
-        dataType: "json",
-        success: function(data) {
-            $("#nombre").val(data.nombre);
-            $("#apellido").val(data.apellido);
-        },
-        error: function(xhr, status, error) {
-            alert("Error: " + error);
-        }
-    });
+  // Obtener el valor del campo ID
+  var id = document.getElementById("id").value;
+
+  // Enviar una solicitud AJAX al servidor para buscar los nombres y apellidos
+  // Reemplaza "procesar_datos.php" con la URL de tu archivo PHP que procesa la solicitud
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "procesar_datos.php", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      // Analizar la respuesta JSON del servidor y actualizar los campos de entrada de nombre y apellido
+      var data = JSON.parse(xhr.responseText);
+      document.getElementById("nombre").value = data.nombre;
+      document.getElementById("apellido").value = data.apellido;
+    }
+  };
+  xhr.send("id=" + id);
 }
-</SCript>
+</script>
 </body>
 </html>
 
