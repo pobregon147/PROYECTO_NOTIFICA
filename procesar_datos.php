@@ -25,7 +25,6 @@ $comentario = $_POST['comentario'];
 try {
     $comentario = str_replace("'", "\'", $comentario);
     $sql = "UPDATE registros SET direccion='$direccion', distrito='$distrito', fecha_nacimiento=CONVERT(varchar(10), '$fecha', 105), comentario='$comentario' WHERE id=$id";
-    $sql = "SELECT registros SET nombre='$nombre', apellido=' WHERE id=$id";
     $conn->exec($sql);
     // Redirigir al usuario a la página de registro y mostrar un mensaje de confirmación
     header("Location: registro.php?mensaje=Datos Registrados");
