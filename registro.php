@@ -198,26 +198,30 @@ try {
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 <script>
-$(document).ready(function() {
-  // Escuchar cambios en el input de búsqueda
-  $('#searchInput').on('keyup', function() {
-    // Obtener el valor actual del input
-    var searchValue = $(this).val();
+// Obtener el elemento de entrada y la tabla
+var input = document.getElementById("searchInput");
+var table = document.getElementById("searchResults");
 
-    // Realizar una solicitud AJAX para buscar en la base de datos
-    $.ajax({
-      url: 'buscar.php',
-      type: 'post',
-      data: { searchValue: searchValue },
-      success: function(response) {
-        // Actualizar la tabla con los resultados de la búsqueda
-        $('#searchResults tbody').html(response);
-      }
-    });
-  });
+// Agregar un evento "keyup" al input
+input.addEventListener("keyup", function() {
+  // Obtener el valor del input de búsqueda
+  var searchText = input.value.toLowerCase();
+
+  // Iterar a través de las filas de la tabla
+  for (var i = 1; i < table.rows.length; i++) {
+    var row = table.rows[i];
+    var name = row.cells[1].textContent.toLowerCase();
+    var surname = row.cells[2].textContent.toLowerCase();
+
+    // Ocultar la fila si no coincide con el valor de búsqueda
+    if (name.indexOf(searchText) === -1 && surname.indexOf(searchText) === -1) {
+      row.style.display = "none";
+    } else {
+      row.style.display = "";
+    }
+  }
 });
 </script>
-
 </body>
 </html>
 
