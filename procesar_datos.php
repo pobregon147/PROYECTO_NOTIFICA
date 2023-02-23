@@ -14,8 +14,6 @@ try {
 
 // Obtener los datos del formulario
 $id = $_POST['id'];
-$nombre = $_POST['nombre'];
-$apellido = $_POST['apellido'];
 $direccion = $_POST['direccion'];
 $distrito = $_POST['distrito'];
 $fecha = $_POST['fecha'];
@@ -31,10 +29,6 @@ try {
 } catch (PDOException $e) {
     echo "Error al insertar el dato: " . $e->getMessage();
 }
-
-// Devolver una respuesta JSON con los valores correspondientes
-$response = array("nombre" => $nombre, "apellido" => $apellido);
-echo json_encode($response);
 
 // Cerrar la conexión a la base de datos
 $conn = null;

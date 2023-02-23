@@ -230,7 +230,7 @@ function buscarNombre() {
   // Enviar una solicitud AJAX al servidor para buscar los nombres y apellidos
   // Reemplaza "procesar_datos.php" con la URL de tu archivo PHP que procesa la solicitud
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "procesar_datos.php", true);
+  xhr.open("POST", "buscar.php", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.onreadystatechange = function() {
     if (xhr.readyState === 4 && xhr.status === 200) {
