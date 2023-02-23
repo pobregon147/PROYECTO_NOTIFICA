@@ -14,6 +14,8 @@ try {
 
 // Obtener los datos del formulario
 $id = $_POST['id'];
+$nombre = $_POST['nombre'];
+$apellido = $_POST['apellido'];
 $direccion = $_POST['direccion'];
 $distrito = $_POST['distrito'];
 $fecha = $_POST['fecha'];
@@ -23,12 +25,17 @@ $comentario = $_POST['comentario'];
 try {
     $comentario = str_replace("'", "\'", $comentario);
     $sql = "UPDATE registros SET direccion='$direccion', distrito='$distrito', fecha_nacimiento=CONVERT(varchar(10), '$fecha', 105), comentario='$comentario' WHERE id=$id";
+    $sql = "SELECT registros SET nombre='$nombre', apellido=' WHERE id=$id";
     $conn->exec($sql);
     // Redirigir al usuario a la página de registro y mostrar un mensaje de confirmación
     header("Location: registro.php?mensaje=Datos Registrados");
 } catch (PDOException $e) {
     echo "Error al insertar el dato: " . $e->getMessage();
 }
+
+// Devolver una respuesta JSON con los valores correspondientes
+$response = array("nombre" => $nombre, "apellido" => $apellido);
+echo json_encode($response);
 
 // Cerrar la conexión a la base de datos
 $conn = null;

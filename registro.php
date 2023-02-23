@@ -222,6 +222,24 @@ input.addEventListener("keyup", function() {
   }
 });
 </script>
+<SCript>
+function buscarNombre() {
+    var id = $("#id").val();
+    $.ajax({
+        type: "POST",
+        url: "buscar_nombre_apellido.php",
+        data: {id: id},
+        dataType: "json",
+        success: function(data) {
+            $("#nombre").val(data.nombre);
+            $("#apellido").val(data.apellido);
+        },
+        error: function(xhr, status, error) {
+            alert("Error: " + error);
+        }
+    });
+}
+</SCript>
 </body>
 </html>
 
