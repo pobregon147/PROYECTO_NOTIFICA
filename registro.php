@@ -117,14 +117,8 @@ try {
             <div class="form-group col-md-6">
             <button type="button" class="btn btn-primary" onclick="buscarNombre()">Buscar</button>
             </div><br>
-
-            <div class="input-group">
-              <div class="input-group-prepend">
-              <span class="input-group-text">Usuario:</span>
-              </div>
               <input type="text" id="nombre" name="nombre" class="form-control" disabled required >
               <input type="text" id="apellido" name="apellido" class="form-control" disabled required ><br>
-            </div>
             </form>
       </div>
 
