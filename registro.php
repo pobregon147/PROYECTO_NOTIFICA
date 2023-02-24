@@ -107,8 +107,9 @@ try {
       <div class="modal-body">
 
       <form method="post" action="procesar_datos.php">
-
+      
       <div class="form-row">
+            <form methor= "post" action="buscar.php">
             <div class="form-group col-md-6">
             <label for="id">ID:</label>
             <input type="text" id="id" name="id" required>
@@ -124,6 +125,7 @@ try {
               <input type="text" id="nombre" name="nombre" class="form-control" disabled required >
               <input type="text" id="apellido" name="apellido" class="form-control" disabled required ><br>
             </div>
+            </form>
       </div>
 
       <div class="form-row">
