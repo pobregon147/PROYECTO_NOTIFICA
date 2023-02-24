@@ -12,22 +12,24 @@ try {
     echo "Error al conectar a la base de datos: " . $e->getMessage();
 }
 
-// Obtenerel valor de la ID enviada
-$id = $_POST['id'];
-$nombre = $_POST['nombre'];
-$apellido = $_POST['apellido'];
-// Realizar una consulta SQL para buscar los nombres y apellidos correspondientes a la ID
-$consulta = $conn->prepare("SELECT nombre, apellido FROM registros WHERE id = :id");
-$consulta->bindParam(":id", $id);
-$consulta->execute();
+// Comprobamos si se ha enviado la solicitud
+if (isset($_POST['submit'])) {
+	// Obtenemos el valor del input de ID
+	$id = $_POST['id'];
 
-// Obtener los nombres y apellidos encontrados
-if ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
-    $nombre = $fila["nombre"];
-    $apellido = $fila["apellido"];
+	// Consulta a la base de datos
+	$stmt = $pdo->prepare("SELECT nombre, apellido FROM registros WHERE id = :id");
+	$stmt->execute(['id' => $id]);
+
+	// Obtenemos el resultado de la consulta
+	$resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+	// Mostramos el resultado en los inputs correspondientes
+	if ($resultado) {
+		echo '<script>document.getElementById("nombre").value="' . $resultado['nombre'] . '";</script>';
+		echo '<script>document.getElementById("apellido").value="' . $resultado['apellido'] . '";</script>';
+	} else {
+		echo '<script>alert("No se encontraron resultados.");</script>';
+	}
 }
-
-// Devolver una respuesta JSON con los valores correspondientes
-$response = array("nombre" => $nombre, "apellido" => $apellido);
-echo json_encode($response);
 ?>

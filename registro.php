@@ -109,15 +109,17 @@ try {
       <form method="post" action="procesar_datos.php">
       
       <div class="form-row">
+            <form method="post" action="buscar.php">
             <div class="form-group col-md-6">
             <label for="id">ID:</label>
             <input type="text" id="id" name="id" required>
             </div>
             <div class="form-group col-md-6">
-            <button type="button" class="btn btn-primary" onclick="buscarNombre()">Buscar</button>
+            <button type="submit" class="btn btn-primary" name="submit">Buscar</button>
             </div><br>
               <input type="text" id="nombre" name="nombre" class="form-control" disabled required >
               <input type="text" id="apellido" name="apellido" class="form-control" disabled required ><br>
+            </form>
       </div>
 
       <div class="form-row">
@@ -215,27 +217,6 @@ input.addEventListener("keyup", function() {
     }
   }
 });
-</script>
-<script>
-function buscarNombre() {
-  // Obtener el valor del campo ID
-  var id = document.getElementById("id").value;
-
-  // Enviar una solicitud AJAX al servidor para buscar los nombres y apellidos
-  // Reemplaza "procesar_datos.php" con la URL de tu archivo PHP que procesa la solicitud
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "buscar.php", true);
-  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      // Analizar la respuesta JSON del servidor y actualizar los campos de entrada de nombre y apellido
-      var data = JSON.parse(xhr.responseText);
-      document.getElementById("nombre").value = data.nombre;
-      document.getElementById("apellido").value = data.apellido;
-    }
-  };
-  xhr.send("id=" + id);
-}
 </script>
 </body>
 </html>
