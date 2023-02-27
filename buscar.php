@@ -4,32 +4,15 @@ $database = "bdnotificaciones";
 $username = "administradorsql";
 $password = "5720805Po";
 
-// Conexión a la base de datos utilizando PDO
-try {
-    $conn = new PDO("sqlsrv:server=$serverName;database=$database", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Error al conectar a la base de datos: " . $e->getMessage();
-}
+// Conexión a la base de datos y preparación de la consulta SQL
+$pdo = new PDO("sqlsrv:server=$serverName;database=$database", $username, $password);
+$stmt = $pdo->prepare('SELECT nombre, apellido FROM registros WHERE id = :id');
+$stmt->bindParam(':id', $_POST['id']);
+$stmt->execute();
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Comprobamos si se ha enviado la solicitud
-if (isset($_POST['submit'])) {
-	// Obtenemos el valor del input de ID
-	$id = $_POST['id'];
+// Devolver los nombres y apellidos en formato JSON
+header('Content-Type: application/json');
+echo json_encode($result);
 
-	// Consulta a la base de datos
-	$stmt = $pdo->prepare("SELECT nombre, apellido FROM registros WHERE id = :id");
-	$stmt->execute(['id' => $id]);
-
-	// Obtenemos el resultado de la consulta
-	$resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-
-	// Mostramos el resultado en los inputs correspondientes
-	if ($resultado) {
-		echo '<script>document.getElementById("nombre").value="' . $resultado['nombre'] . '";</script>';
-		echo '<script>document.getElementById("apellido").value="' . $resultado['apellido'] . '";</script>';
-	} else {
-		echo '<script>alert("No se encontraron resultados.");</script>';
-	}
-}
 ?>

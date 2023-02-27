@@ -115,7 +115,7 @@ try {
             <input type="text" id="id" name="id" required>
             </div>
             <div class="form-group col-md-6">
-            <button type="submit" class="btn btn-primary" name="submit">Buscar</button>
+            <button type="submit" class="btn btn-primary" name="submit" id="buscar">Buscar</button>
             </div><br>
               <input type="text" id="nombre" name="nombre" class="form-control" disabled required >
               <input type="text" id="apellido" name="apellido" class="form-control" disabled required ><br>
@@ -190,6 +190,7 @@ try {
     </tbody>
 </table>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
@@ -218,6 +219,30 @@ input.addEventListener("keyup", function() {
   }
 });
 </script>
+<script>
+$(document).ready(function() {
+  // Al hacer clic en el botón "Buscar"
+  $('#buscar').click(function(e) {
+    e.preventDefault();
+    var id = $('#id').val();
+    // Hacer petición AJAX a un archivo PHP que devuelve los nombres y apellidos
+    $.ajax({
+      url: 'buscar.php',
+      type: 'POST',
+      data: {id: id},
+      dataType: 'json',
+      success: function(response) {
+        $('#nombre').val(response.nombre);
+        $('#apellido').val(response.apellido);
+      },
+      error: function(xhr, status, error) {
+        console.log(error);
+      }
+    });
+  });
+});
+</script>
+
 </body>
 </html>
 
