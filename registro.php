@@ -107,18 +107,20 @@ try {
       <div class="modal-body">
 
       <form method="post" action="procesar_datos.php">
-      
+
+      <form method= "post" action="buscar.php" id="buscar">
       <div class="form-row">
             <div class="form-group col-md-6">
             <label for="id">ID:</label>
             <input type="text" id="id" name="id" required>
             </div>
             <div class="form-group col-md-6">
-            <button type="submit" class="btn btn-primary" name="submit" id="buscar">Buscar</button>
+            <button type="button" class="btn btn-primary" id="buscar">Buscar</button>
             </div><br>
               <input type="text" id="nombre" name="nombre" class="form-control" disabled required >
               <input type="text" id="apellido" name="apellido" class="form-control" disabled required ><br>
       </div>
+      </form>
 
       <div class="form-row">
             <div class="form-group col-md-6">
@@ -237,6 +239,14 @@ $(document).ready(function() {
         console.log(error);
       }
     });
+  });
+});
+</script>
+<script>
+$(document).ready(function() {
+  // Manejar el evento click del botón de búsqueda
+  $('#buscar').click(function() {
+    $('#form-busqueda').submit();
   });
 });
 </script>
