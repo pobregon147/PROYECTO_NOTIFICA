@@ -111,13 +111,13 @@ try {
       <div class="form-row">
             <div class="form-group col-md-6">
             <label for="id">ID:</label>
-            <input type="text" id="id" name="id" required>
+            <input type="text" id="id" name="id" class="form-control" required>
             </div>
             <div class="form-group col-md-6">
             <button type="button" class="btn btn-primary" id="buscar">Buscar</button>
             </div><br>
-              <input type="text" id="nombre" name="nombre" class="form-control" disabled required >
-              <input type="text" id="apellido" name="apellido" class="form-control" disabled required ><br>
+              <input type="text" id="nombre" name="nombre" class="form-control" readonly>
+              <input type="text" id="apellido" name="apellido" class="form-control" readonly><br>
       </div>
 
       <div class="form-row">
@@ -218,35 +218,23 @@ input.addEventListener("keyup", function() {
 });
 </script>
 <script>
-$(document).ready(function() {
-  // Al hacer clic en el botón "Buscar"
-  $('#buscar').click(function(e) {
-    e.preventDefault();
+  $(document).ready(function() {
+  $('#buscar').click(function() {
     var id = $('#id').val();
-    // Hacer petición AJAX a un archivo PHP que devuelve los nombres y apellidos
     $.ajax({
       url: 'buscar.php',
-      type: 'POST',
-      data: {id: id},
+      method: 'POST',
+      data: { id: id },
       dataType: 'json',
       success: function(response) {
         $('#nombre').val(response.nombre);
         $('#apellido').val(response.apellido);
-      },
-      error: function(xhr, status, error) {
-        console.log(error);
+        $('#modaldatos').modal('show');
       }
     });
   });
 });
-</script>
-<script>
-$(document).ready(function() {
-  // Manejar el evento click del botón de búsqueda
-  $('#buscar').click(function() {
-    $('#form-busqueda').submit();
-  });
-});
+
 </script>
 
 </body>
