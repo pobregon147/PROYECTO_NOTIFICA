@@ -217,6 +217,7 @@ input.addEventListener("keyup", function() {
   }
 });
 </script>
+
 <script>
   $(document).ready(function() {
   $('#buscar').click(function() {
@@ -234,7 +235,6 @@ input.addEventListener("keyup", function() {
     });
   });
 });
-
 </script>
 
 </body>
