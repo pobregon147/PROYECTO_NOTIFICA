@@ -8,7 +8,7 @@ try {
     $conn = new PDO("sqlsrv:server=$serverName;database=$database", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $conn->prepare('SELECT nombre, apellido FROM registros WHERE id = :id');
+    $stmt = $conn->query("SELECT * FROM registros");
     $stmt->bindParam(':id', $_POST['id']);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
