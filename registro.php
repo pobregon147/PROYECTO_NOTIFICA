@@ -108,7 +108,6 @@ try {
 
       <form method="post" action="procesar_datos.php">
 
-      <form method= "post" action="buscar.php" id="buscar">
       <div class="form-row">
             <div class="form-group col-md-6">
             <label for="id">ID:</label>
@@ -120,7 +119,6 @@ try {
               <input type="text" id="nombre" name="nombre" class="form-control" disabled required >
               <input type="text" id="apellido" name="apellido" class="form-control" disabled required ><br>
       </div>
-      </form>
 
       <div class="form-row">
             <div class="form-group col-md-6">
