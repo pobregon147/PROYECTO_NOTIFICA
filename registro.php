@@ -14,7 +14,18 @@ try {
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
+
+$id = $_POST['id']; // suponiendo que estás pasando el ID desde el formulario
+
+$stmt = $conn->prepare("SELECT nombre, apellido FROM registros WHERE id = :id");
+$stmt->bindParam(':id', $id);
+$stmt->execute();
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$nombre = $result['nombre'];
+$apellido = $result['apellido'];
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -107,7 +118,16 @@ try {
 
       <form method="post" action="procesar_datos.php">
 
-      
+      <div class="form-row ">
+        <div class="form-group col-md-6">
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id" required><br>
+            <?php if(isset($nombre) && isset($apellido)): ?>
+            <p>Nombre: <?php echo $nombre ?></p>
+            <p>Apellido: <?php echo $apellido ?></p>
+            <?php endif; ?>
+        </div>
+      </div>
 
       <div class="form-row">
             <div class="form-group col-md-6">
@@ -176,17 +196,7 @@ try {
         <?php endforeach ?>
     </tbody>
 </table>
-<div class="form-row">
-            <div class="form-group col-md-6">
-            <label for="id">ID:</label>
-            <input type="text" id="id" name="id" class="form-control" required>
-            </div>
-            <div class="form-group col-md-6">
-            <button type="button" class="btn btn-primary" id="buscar">Buscar</button>
-            </div><br>
-              <input type="text" id="nombre" name="nombre" class="form-control" readonly>
-              <input type="text" id="apellido" name="apellido" class="form-control" readonly><br>
-      </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -216,26 +226,6 @@ input.addEventListener("keyup", function() {
   }
 });
 </script>
-
-<script>
-  $(document).ready(function() {
-  $('#buscar').click(function() {
-    var id = $('#id').val();
-    $.ajax({
-      url: 'buscar.php',
-      method: 'POST',
-      data: { id: id },
-      dataType: 'json',
-      success: function(response) {
-        $('#nombre').val(response.nombre);
-        $('#apellido').val(response.apellido);
-        $('#modaldatos').modal('show');
-      }
-    });
-  });
-});
-</script>
-
 </body>
 </html>
 
