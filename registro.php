@@ -123,8 +123,8 @@ $apellido = $result['apellido'];
             <label for="id">ID:</label>
             <input type="text" id="id" name="id" required><br>
             <?php if(isset($nombre) && isset($apellido)): ?>
-            <p>Nombre: <?php echo $nombre ?></p>
-            <p>Apellido: <?php echo $apellido ?></p>
+            <input>Nombre: <?php echo $nombre ?><br>
+            <input>Apellido: <?php echo $apellido ?><br>
             <?php endif; ?>
         </div>
       </div>
