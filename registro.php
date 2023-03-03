@@ -121,9 +121,10 @@ $apellido = $result['apellido'];
       <div class="form-row ">
         <div class="form-group col-md-6">
             <label for="id">ID:</label>
-            <input type="text" id="id" name="id" value="<?php if(isset($nombre) && isset($apellido)): ?>" required><br>
-            <input type="text" id="nombre" name="nombre" value="<?php echo $nombre; ?>" required><br>
-            <input type="text" id="apellido" name="apellido" value="<?php echo $apellido; ?>" required><br>
+            <input type="text" id="id" name="id" required><br>
+            <?php if(isset($nombre) && isset($apellido)): ?>
+            <input>Nombre: <?php echo $nombre ?><br>
+            <input>Apellido: <?php echo $apellido ?><br>
             <?php endif; ?>
         </div>
       </div>
