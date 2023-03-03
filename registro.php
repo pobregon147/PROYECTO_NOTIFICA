@@ -174,7 +174,6 @@ $apellido = $result['apellido'];
 
 <input type="text" id="searchInput" placeholder="Buscar por nombre"><br>
 
-//buton pa cagar
 <div class="modal-body">
     <form method="post" action="procesar_datos.php">
         <div class="form-group">
