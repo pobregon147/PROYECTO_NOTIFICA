@@ -16,6 +16,8 @@ try {
 }
 
 $id = $_POST['id']; // suponiendo que estás pasando el ID desde el formulario
+$nombre = $_POST['nombre'];
+$apellido = $_POST['apellido'];
 
 $stmt = $conn->prepare("SELECT nombre, apellido FROM registros WHERE id = :id");
 $stmt->bindParam(':id', $id);
