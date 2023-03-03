@@ -15,9 +15,25 @@ try {
     echo "Error: " . $e->getMessage();
 }
 
+?>
+
+<?php
+$servername = "servidornotificaciones.database.windows.net";
+$dbname = "bdnotificaciones";
+$username = "administradorsql";
+$password = "5720805Po";
+
+try {
+    $conn = new PDO("sqlsrv:Server=$servername;Database=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+?>
+<?php
 $id = $_POST['id']; // suponiendo que estás pasando el ID desde el formulario
 
-$stmt = $conn->prepare("SELECT nombre, apellido FROM registros WHERE id = :id");
+$stmt = $conn->prepare("SELECT nombre, apellido FROM usuarios WHERE id = :id");
 $stmt->bindParam(':id', $id);
 $stmt->execute();
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -121,10 +137,7 @@ $apellido = $result['apellido'];
       <div class="form-row ">
         <div class="form-group col-md-6">
             <label for="id">ID:</label>
-            <input type="text" id="id" name="id" value= "<?php if(isset($nombre) && isset($apellido)): ?>"required><br>
-            <input type="text" id="nombre" name="nombre" value="<?php echo $nombre; ?>" disabled required><br>
-            <input type="text" id="apellido" name="apellido" value="<?php echo $apellido; ?>" disabled required><br>
-            <?php endif; ?>
+            <input type="text" id="id" name="id" required><br>
         </div>
       </div>
 
@@ -160,6 +173,39 @@ $apellido = $result['apellido'];
 </div>
 
 <input type="text" id="searchInput" placeholder="Buscar por nombre"><br>
+
+//buton pa cagar
+<div class="modal-body">
+    <form method="post" action="procesar_datos.php">
+        <div class="form-group">
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id" required><br>
+            <?php if(isset($nombre) && isset($apellido)): ?>
+            <p>Nombre: <?php echo $nombre ?></p>
+            <p>Apellido: <?php echo $apellido ?></p>
+            <?php endif; ?>
+        </div>
+        <div class="form-group">
+            <label for="direccion">Direccion:</label>
+            <input type="text" id="direccion" name="direccion" required><br>
+        </div>
+        <div class="form-group">
+            <label for="distrito">Distrito:</label>
+            <input type="text" id="distrito" name="distrito" required><br>
+        </div>
+        <div class="form-group">
+            <label for="fecha">Fecha de Nacimiento:</label>
+            <input type="date" id="fecha" name="fecha" required><br>
+        </div>
+        <div class="form-group">
+            <label for="comentario">Comentario:</label>
+            <input type="text" id="comentario" name="comentario" required><br>
+        </div>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" value="Registrar" class="btn btn-primary">Registrar</button>
+    </form>
+</div>
+
 
 <table id="searchResults">
     <thead>
