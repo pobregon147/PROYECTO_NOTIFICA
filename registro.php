@@ -257,8 +257,8 @@ input.addEventListener("keyup", function() {
   // Iterar a través de las filas de la tabla
   for (var i = 1; i < table.rows.length; i++) {
     var row = table.rows[i];
-    var name = row.cells[1].textContent.toLowerCase();
-    var surname = row.cells[2].textContent.toLowerCase();
+    var name = row.cells[3].textContent.toLowerCase();
+    var surname = row.cells[9].textContent.toLowerCase();
 
     // Ocultar la fila si no coincide con el valor de búsqueda
     if (name.indexOf(searchText) === -1 && surname.indexOf(searchText) === -1) {
