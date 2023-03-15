@@ -13,16 +13,17 @@ try {
 }
 
 // Obtener los datos del formulario
-$id = $_POST['id'];
-$direccion = $_POST['direccion'];
-$distrito = $_POST['distrito'];
-$fecha = $_POST['fecha'];
-$comentario = $_POST['comentario'];
+$N_CARGOS = $_POST['N_CARGOS'];
+$NOTIFICADOR = $_POST['NOTIFICADOR'];
+$FECHA_NOTI = $_POST['FECHA_NOTI'];
+$RELACION = $_POST['RELACION'];
+$ESTADO = $_POST['ESTADO'];
+$OBSERVACION = $_POST['OBSERVACION'];
 
 // Insertar los datos en la base de datos
 try {
-    $comentario = str_replace("'", "\'", $comentario);
-    $sql = "UPDATE registros SET direccion='$direccion', distrito='$distrito', fecha_nacimiento=CONVERT(varchar(10), '$fecha', 105), comentario='$comentario' WHERE id=$id";
+    $OBSERVACION = str_replace("'", "\'", $OBSERVACION);
+    $sql = "UPDATE registros SET NOTIFICADOR='$NOTIFICADOR', FECHA_NOTI='$FECHA_NOTI', RELACION='$RELACION', ESTADO='$ESTADO', OBSERVACION='$OBSERVACION' WHERE N_CARGOS=$N_CARGOS";
     $conn->exec($sql);
     // Redirigir al usuario a la página de registro y mostrar un mensaje de confirmación
     header("Location: registro.php?mensaje=Datos Registrados");

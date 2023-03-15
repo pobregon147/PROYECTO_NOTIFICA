@@ -15,17 +15,17 @@ try {
     echo "Error: " . $e->getMessage();
 }
 
-$id = $_POST['id']; // suponiendo que estás pasando el ID desde el formulario
-$nombre = $_POST['nombre'];
-$apellido = $_POST['apellido'];
+$N_CARGOS = $_POST['N_CARGOS']; // suponiendo que estás pasando el ID desde el formulario
+$NUM_RD = $_POST['NUM_RD'];
+$NOMBRES = $_POST['NOMBRES'];
 
-$stmt = $conn->prepare("SELECT nombre, apellido FROM registros WHERE id = :id");
-$stmt->bindParam(':id', $id);
+$stmt = $conn->prepare("SELECT NUM_RD, NOMBRES FROM registros WHERE N_CARGOS = :N_CARGOS");
+$stmt->bindParam(':N_CARGOS', $N_CARGOS);
 $stmt->execute();
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$nombre = $result['nombre'];
-$apellido = $result['apellido'];
+$nombre = $result['NUM_RD'];
+$apellido = $result['NOMBRES'];
 ?>
 
 
@@ -57,42 +57,61 @@ $apellido = $result['apellido'];
 
       <div class="form-row">
             <div class="form-group col-md-6">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required><br>
+            <label for="NOMBRES">Usuario:</label>
+            <input type="text" id="NOMBRES" name="NOMBRES" required><br>
             </div>
 
             <div class="form-group col-md-6">
-            <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" name="apellido" required><br>
+            <label for="DIRECCION">Direccion:</label>
+            <input type="text" id="DIRECCION" name="DIRECCION" required><br>
             </div>
       </div>
 
       <div class="form-row">        
             <div class="form-group col-md-6">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
+            <label for="DISTRITO">Distrito:</label>
+            <input type="text" id="DISTRITO" name="DISTRITO" required><br>
             </div>
 
             <div class="form-group col-md-6">
-            <label for="telefono">Teléfono:</label>
-            <input type="tel" id="telefono" name="telefono" required><br>
+            <label for="IE">IE:</label>
+            <input type="text" id="IE" name="IE"><br>
             </div>
       </div>    
 
       <div class="form-row"> 
             <div class="form-group col-md-6">
-            <label for="edad">Edad:</label>
-            <input type="number" id="edad" name="edad" required><br>
+            <label for="TIPO_DOC">Documento:</label>
+            <input type="text" id="TIPO_DOC" name="TIPO_DOC" required><br>
             </div>
 
             <div class="form-group col-md-6">
-            <label for="genero">Género:</label>
-            <select id="genero" name="genero" class="form-control">
-              <option selected>Selecciona</option>
-              <option value="masculino">Masculino</option>
-              <option value="femenino">Femenino</option>
-              <option value="otro">Otro</option>
-            </select><br>
+            <label for="AREA">Area:</label>
+            <input type="text" id="AREA" name="AREA" required><br>
+            </div>
+      </div>
+
+      <div class="form-row"> 
+            <div class="form-group col-md-6">
+            <label for="NUM_RD">N° Documento:</label>
+            <input type="numb" id="NUM_RD" name="NUM_RD" required><br>
+            </div>
+
+            <div class="form-group col-md-6">
+            <label for="FECHA_DOC">Fecha:</label>
+            <input type="date" id="FECHA_DOC" name="FECHA_DOC" required><br>
+            </div>
+      </div>
+
+      <div class="form-row"> 
+            <div class="form-group col-md-6">
+            <label for="EXPEDIENTE">Expediente:</label>
+            <input type="text" id="EXPEDIENTE" name="EXPEDIENTE" required><br>
+            </div>
+
+            <div class="form-group col-md-6">
+            <label for="ASUNTO">Asunto:</label>
+            <input type="text" id="ASUNTO" name="ASUNTO" required><br>
             </div>
       </div>
 
@@ -122,10 +141,11 @@ $apellido = $result['apellido'];
 
       <div class="form-row ">
         <div class="form-group col-md-6">
-            <label for="id">ID:</label>
-            <input type="text" id="id" name="id" required><br>
+            <label for="N_CARGOS">N° de Cargo:</label>
+            <input type="num" id="N_CARGOS" name="N_CARGOS" required><br>
         </div>
       </div>
+      
       <div class="form-row ">
         <div class="form-group col-md-6">
             <?php if(isset($nombre) && isset($apellido)): ?>
@@ -137,27 +157,34 @@ $apellido = $result['apellido'];
 
       <div class="form-row">
             <div class="form-group col-md-6">
-            <label for="direccion">Direccion:</label>
-            <input type="text" id="direccion" name="direccion" required><br>
+            <label for="NOTIFICADOR">Notificador:</label>
+            <input type="text" id="direNOTIFICADORccion" name="NOTIFICADOR" required><br>
             </div>
 
             <div class="form-group col-md-6">
-            <label for="distrito">Distrito:</label>
-            <input type="text" id="distrito" name="distrito" required><br>
+            <label for="FECHA_NOTI">Fecha de Notificacion:</label>
+            <input type="date" id="FECHA_NOTI" name="FECHA_NOTI" required><br>
             </div>
       </div>
 
       <div class="form-row">        
             <div class="form-group col-md-6">
-            <label for="fecha">Fecha de Nacimiento:</label>
-            <input type="date" id="fecha" name="fecha" required><br>
+            <label for="RELACION">Relacion:</label>
+            <input type="text" id="RELACION" name="RELACION" required><br>
             </div>
 
             <div class="form-group col-md-6">
-            <label for="comentario">Comentario:</label>
-            <input type="text" id="comentario" name="comentario" required><br>
+            <label for="ESTADO">Estado:</label>
+            <input type="text" id="ESTADO" name="ESTADO" required><br>
             </div>
       </div>    
+
+      <div class="form-row">        
+            <div class="form-group col-md-6">
+            <label for="OBSERVACION">Observacion:</label>
+            <input type="text" id="OBSERVACION" name="OBSERVACION" required><br>
+            </div>
+      </div>   
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             <button type="submit" value="Registrar" class="btn btn-primary">Registrar</button>
       </form>
@@ -171,33 +198,43 @@ $apellido = $result['apellido'];
 <table id="searchResults">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
+            <th>N_CARGOS</th>
+            <th>FECHA_DOC</th>
+            <th>TIPO_DOC</th>
+            <th>NUM_RD</th>
+            <th>EXPEDIENTE</th>
+            <th>ASUNTO</th>
+            <th>AREA</th>
             <th>DIRECCION</th>
             <th>DISTRITO</th>
-            <th>EDAD</th>
-            <th>FECHA DE NACIMIENTO</th>
-            <th>GENERO</th>
-            <th>EMAIL</th>
-            <th>TELEFONO</th>
-            <th>COMENTARIO</th>
+            <th>NOMBRES</th>
+            <th>IE</th>
+            <th>NOTIFICADOR</th>
+            <th>FECHA_NOTI</th>
+            <th>RELACION</th>
+            <th>ESTADO</th>
+            <th>OBSERVACION</th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($registros as $registro): ?>
             <tr>
-                <td><?= $registro['id'] ?></td>
-                <td><?= $registro['nombre'] ?></td>
-                <td><?= $registro['apellido'] ?></td>
-                <td><?= $registro['direccion'] ?></td>
-                <td><?= $registro['distrito'] ?></td>
-                <td><?= $registro['edad'] ?></td>
-                <td><?= date('d-M-Y', strtotime($registro['fecha_nacimiento'])) ?></td>
-                <td><?= $registro['genero'] ?></td>
-                <td><?= $registro['email'] ?></td>
-                <td><?= $registro['telefono'] ?></td>
-                <td><?= $registro['comentario'] ?></td>
+                <td><?= $registro['N_CARGOS'] ?></td>
+                <td><?= date('d-M-Y', strtotime($registro['FECHA_DOC'])) ?></td>
+                <td><?= $registro['TIPO_DOC'] ?></td>
+                <td><?= $registro['NUM_RD'] ?></td>
+                <td><?= $registro['EXPEDIENTE'] ?></td>
+                <td><?= $registro['ASUNTO'] ?></td>
+                <td><?= $registro['AREA'] ?></td>
+                <td><?= $registro['DIRECCION'] ?></td>
+                <td><?= $registro['DISTRITO'] ?></td>
+                <td><?= $registro['NOMBRES'] ?></td>
+                <td><?= $registro['IE'] ?></td>
+                <td><?= $registro['NOTIFICADOR'] ?></td>
+                <td><?= date('d-M-Y', strtotime($registro['FECHA_NOTI'])) ?></td>
+                <td><?= $registro['RELACION'] ?></td>
+                <td><?= $registro['ESTADO'] ?></td>
+                <td><?= $registro['OBSERVACION'] ?></td>
             </tr>
         <?php endforeach ?>
     </tbody>
