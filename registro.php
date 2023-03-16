@@ -274,7 +274,7 @@ input.addEventListener("keyup", function() {
 </script>
 
 <script>$(document).ready( function () {
-    $('#msearchResults').DataTable();
+    $('#searchResults').DataTable();
 } );
 </script>
 
