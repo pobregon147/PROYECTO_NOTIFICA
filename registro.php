@@ -271,7 +271,7 @@ input.addEventListener("keyup", function() {
   }
 });
 </script>
-<script>let table = new DataTable('#searchResultse');</script>
+<script>let table = new DataTable('#searchResults');</script>
 </body>
 </html>
 
