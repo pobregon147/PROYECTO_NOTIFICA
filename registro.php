@@ -247,6 +247,12 @@ $apellido = $result['NOMBRES'];
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>$(document).ready( function () {
+    $('#searchResults').DataTable();
+} );
+</script>
+
 <script>
 // Obtener el elemento de entrada y la tabla
 var input = document.getElementById("searchInput");
@@ -260,22 +266,17 @@ input.addEventListener("keyup", function() {
   // Iterar a través de las filas de la tabla
   for (var i = 1; i < table.rows.length; i++) {
     var row = table.rows[i];
-    var name = row.cells[3].textContent.toLowerCase();
-    var surname = row.cells[9].textContent.toLowerCase();
+    var rd = row.cells[3].textContent.toLowerCase();
+    var nombre = row.cells[9].textContent.toLowerCase();
 
     // Ocultar la fila si no coincide con el valor de búsqueda
-    if (name.indexOf(searchText) === -1 && surname.indexOf(searchText) === -1) {
+    if (rd.indexOf(searchText) === -1 && nombre.indexOf(searchText) === -1) {
       row.style.display = "none";
     } else {
       row.style.display = "";
     }
   }
 });
-</script>
-
-<script>$(document).ready( function () {
-    $('#searchResults').DataTable();
-} );
 </script>
 
 </body>
