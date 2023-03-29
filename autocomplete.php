@@ -21,4 +21,14 @@ try {
     // construir la lista desplegable con los valores encontrados
     $output = '';
     foreach ($result as $row) {
-        $output .= '<div class="autocomplete_list_item">' . $row[$id] .
+        $output .= '<div class="autocomplete_list_item">' . $row[$id] . '</div>';
+    }
+    $output = '<div class="autocomplete_list">' . $output . '</div>';
+
+    // enviar la respuesta al cliente
+    echo $output;
+} catch (PDOException $e) {
+    // manejar excepciones de la base de datos
+    echo "Error de la base de datos: " . $e->getMessage();
+}
+?>
