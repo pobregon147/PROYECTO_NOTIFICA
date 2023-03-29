@@ -84,7 +84,8 @@ $apellido = $result['NOMBRES'];
             <div class="form-group col-md-6">
             <label for="TIPO_DOC">Documento:</label>
             <input type="text" id="TIPO_DOC" name="TIPO_DOC" class ="autocomplete" required><br>
-            </div>
+            <ul id="lista"></ul>
+          </div>
 
             <div class="form-group col-md-6">
             <label for="AREA">Area:</label>
@@ -248,70 +249,8 @@ $apellido = $result['NOMBRES'];
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // cuando el usuario escriba en un campo con la clase "autocomplete"
-            $('.autocomplete').keyup(function() {
-                // obtener el valor del campo actual
-                var currentValue = $(this).val();
-                // obtener el ID del campo actual
-                var currentId = $(this).attr('id');
-                // hacer una solicitud AJAX al servidor para buscar los valores correspondientes
-                $.ajax({
-                    url: 'autocomplete.php',
-                    method: 'POST',
-                    data: {id: currentId, value: currentValue},
-                    success: function(response) {
-                        // mostrar los valores devueltos en una lista desplegable debajo del campo actual
-                        $('#' + currentId + '_autocomplete_list').html(response);
-                        $('#' + currentId + '_autocomplete_list').show();
-                    }
-                });
-            });
-
-            // cuando el usuario seleccione un valor de la lista desplegable
-            $('.autocomplete_list_item').click(function() {
-                // obtener el valor seleccionado
-                var selectedValue = $(this).text();
-                // obtener el ID del campo actual
-                var currentId = $(this).parent().attr('id').replace('_autocomplete_list', '');
-                // establecer el valor del campo actual en el valor seleccionado
-                $('#' + currentId).val(selectedValue);
-                // ocultar la lista desplegable
-                $(this).parent().hide();
-            });
-        });
-    </script>
-<script>$(document).ready( function () {
-    $('#searchResults').DataTable();
-} );
-</script>
-
-<script>
-// Obtener el elemento de entrada y la tabla
-var input = document.getElementById("searchInput");
-var table = document.getElementById("searchResults");
-
-// Agregar un evento "keyup" al input
-input.addEventListener("keyup", function() {
-  // Obtener el valor del input de búsqueda
-  var searchText = input.value.toLowerCase();
-
-  // Iterar a través de las filas de la tabla
-  for (var i = 1; i < table.rows.length; i++) {
-    var row = table.rows[i];
-    var rd = row.cells[3].textContent.toLowerCase();
-    var nombre = row.cells[9].textContent.toLowerCase();
-
-    // Ocultar la fila si no coincide con el valor de búsqueda
-    if (rd.indexOf(searchText) === -1 && nombre.indexOf(searchText) === -1) {
-      row.style.display = "none";
-    } else {
-      row.style.display = "";
-    }
-  }
-});
-</script>
+<script> src="busqueda.js"</script>
+<script src="autocomplete.js"></script>
 
 </body>
 </html>
