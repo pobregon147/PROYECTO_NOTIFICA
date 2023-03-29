@@ -54,7 +54,7 @@ $apellido = $result['NOMBRES'];
       </div>
       <div class="modal-body">
 
-      <form method="post" action="procesar_registro.php">
+      <form method="post" action="procesar_registro.php" autocomplete="off">
 
       <div class="form-row">
             <div class="form-group col-md-6">
@@ -83,7 +83,7 @@ $apellido = $result['NOMBRES'];
       <div class="form-row"> 
             <div class="form-group col-md-6">
             <label for="TIPO_DOC">Documento:</label>
-            <input type="text" id="TIPO_DOC" name="TIPO_DOC" class ="autocomplete" required><br>
+            <input type="text" id="TIPO_DOC" name="TIPO_DOC" required><br>
             <ul id="lista"></ul>
           </div>
 

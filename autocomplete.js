@@ -4,7 +4,7 @@ function getCodigos(){
     let inputCP = document.getElementById("TIPO_DOC").value
     let lista = document.getElementById("lista").value
 
-    let url = "inc/getCodigos.php"
+    let url = "getCodigos.php"
     let formData = new FormData()
     formData.append("TIPO_DOC", inputCP)
 
