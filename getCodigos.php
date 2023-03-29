@@ -1,12 +1,6 @@
 <?php
 
-    $serverName = "servidornotificaciones.database.windows.net";
-    $database = "bdnotificaciones";
-    $username = "administradorsql";
-    $password = "5720805Po";
-
-    $conn = new PDO("sqlsrv:server=$serverName;database=$database", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    require 'conexion.php';
 
     $TIPOC_DOC = $_POST["TIPO_DOC"];
 
