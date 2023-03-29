@@ -189,6 +189,8 @@ $apellido = $result['NOMBRES'];
 </div>
 
 <input type="text" id="searchInput" placeholder="Buscar por nombre"><br>
+<input type="text" id="TIPO_DOC" name="TIPO_DOC" required><br>
+            <ul id="lista"></ul>
 
 <table id="searchResults">
     <thead>
