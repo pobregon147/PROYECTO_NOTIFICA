@@ -47,7 +47,7 @@ $apellido = $result['NOMBRES'];
       </div>
       <div class="modal-body">
 
-      <form method="post" action="procesar_registro.php" autocomplete="off">
+      <form method="post" action="procesar_registro.php">
 
       <div class="form-row">
             <div class="form-group col-md-6">
@@ -189,9 +189,10 @@ $apellido = $result['NOMBRES'];
 </div>
 
 <input type="text" id="searchInput" placeholder="Buscar por nombre"><br>
+<form  action="" method="post" autocomplete="off">
 <input type="text" id="TIPO_DOC" name="TIPO_DOC" required><br>
             <ul id="lista"></ul>
-
+</form>
 <table id="searchResults">
     <thead>
         <tr>
