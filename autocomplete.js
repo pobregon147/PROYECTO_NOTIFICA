@@ -1,17 +1,8 @@
-$(document).ready(function() {
-    $("#ASUNTO").autocomplete({
-        source: function(request, response) {
-            $.ajax({
-                url: "getCodigos.php",
-                dataType: "json",
-                data: {
-                    term: request.term
-                },
-                success: function(data) {
-                    response(data);
-                }
-            });
-        },
-        minLength: 1
-    });
+<script>
+$(function() {
+  $("#TIPO_DOC").autocomplete({
+    source: "get_autocomplete_values.php",
+    minLength: 1
+  });
 });
+</script>

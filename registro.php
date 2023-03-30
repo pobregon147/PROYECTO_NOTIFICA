@@ -32,6 +32,7 @@ $apellido = $result['NOMBRES'];
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link href="https://cdn.datatables.net/v/bs4/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/jquery-ui-1.13.2.custom/jquery-ui.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
   </head>
 <body>
@@ -190,8 +191,8 @@ $apellido = $result['NOMBRES'];
 </div>
 
 <input type="text" id="searchInput" placeholder="Buscar por nombre"><br>
-<label for="ASUNTO">Asunto:</label>
-            <input type="text" id="ASUNTO" name="ASUNTO" required><br>
+<label for="TIPO_DOC">Documento:</label>
+            <input type="text" id="TIPO_DOC" name="TIPO_DOC" required><br>
 <table id="searchResults">
     <thead>
         <tr>
@@ -246,6 +247,8 @@ $apellido = $result['NOMBRES'];
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="external/jquery/jquery.js"></script>
 <script src="jquery-ui.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script src="busqueda.js"></script>
 <script src="autocomplete.js"></script>
 
