@@ -77,7 +77,6 @@ $apellido = $result['NOMBRES'];
             <div class="form-group col-md-6">
             <label for="TIPO_DOC">Documento:</label>
             <input type="text" id="TIPO_DOC" name="TIPO_DOC" required><br>
-            <ul id="lista"></ul>
           </div>
 
             <div class="form-group col-md-6">
@@ -189,10 +188,6 @@ $apellido = $result['NOMBRES'];
 </div>
 
 <input type="text" id="searchInput" placeholder="Buscar por nombre"><br>
-<form  action="" method="post" autocomplete="off">
-<input type="text" id="TIPO_DOC" name="TIPO_DOC" required><br>
-            <ul id="lista"></ul>
-</form>
 <table id="searchResults">
     <thead>
         <tr>

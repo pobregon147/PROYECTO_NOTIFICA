@@ -1,17 +1,24 @@
+
 <?php
 
-    require 'conexion.php';
+require 'conexion.php';
 
-    $TIPOC_DOC = $_POST["TIPO_DOC"];
+// Término de búsqueda
+$searchTerm = $_GET['term'];
 
-    $sql = "SELECT TIPO_DOC FROM registros WHERE TIPO_DOC LIKE ?";
-    $query = $conn->prepare($sql);
-    $query->execute([$TIPO_DOC . '%']);
-    
-    $html = "";
-    while($row = $query->fetch(PDO::FETCH_ASSOC)){
-        $html .="<li>". $row["TIPO_DOC"] . "</li>";
+// Búsqueda en la base de datos
+$stmt = $conn->prepare("SELECT TIPO_DOC FROM registros WHERE TIPO_DOC LIKE :searchTerm");
+$stmt->bindValue(':searchTerm', '%' . $searchTerm . '%', PDO::PARAM_STR);
+$stmt->execute();
+
+// Resultados de búsqueda
+$data = array();
+if ($stmt->rowCount() > 0) {
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $data[] = $row['TIPO_DOC'];
     }
-    echo json_encode($html, JSON_UNESCAPED_UNICODE);
+}
 
+// Devolver resultados en formato JSON
+echo json_encode($data);
 ?>
