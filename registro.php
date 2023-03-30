@@ -31,6 +31,8 @@ $apellido = $result['NOMBRES'];
     <title>CARGO DE NOTIFICACIONES</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link href="https://cdn.datatables.net/v/bs4/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/jquery-ui-1.13.2.custom/jquery-ui.min.css">
+
   </head>
 <body>
 
@@ -240,6 +242,8 @@ $apellido = $result['NOMBRES'];
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="external/jquery/jquery.js"></script>
+<script src="jquery-ui.min.js"></script>
 <script src="busqueda.js"></script>
 <script src="autocomplete.js"></script>
 
