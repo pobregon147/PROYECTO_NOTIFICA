@@ -1,8 +1,7 @@
-<script>
 $(function() {
   $("#TIPO_DOC").autocomplete({
-    source: "get_autocomplete_values.php",
+    source: "getCodigos.php",
     minLength: 1
   });
 });
-</script>
+
