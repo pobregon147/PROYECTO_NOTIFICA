@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#TIPO_DOC").autocomplete({
+    $("#ASUNTO").autocomplete({
         source: function(request, response) {
             $.ajax({
                 url: "getCodigos.php",
