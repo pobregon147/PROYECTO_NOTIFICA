@@ -81,9 +81,21 @@ $apellido = $result['NOMBRES'];
             <label for="TIPO_DOC">Documento:</label>
             <input type="text" list ="RD" id="TIPO_DOC" name="TIPO_DOC" required><br>
             <datalist id="RD">
-            <option value="RESOLUCIÓN DIRECTORAL">
-            <option value="RESOLUCIÓN JEFATURAL">
-            <option value="RESOLUCIÓN ONP">
+            <?php
+              // Conexión a la base de datos utilizando PDO
+              require 'conexion.php';
+              // Consulta para obtener los nombres de las frutas
+              $consulta = 'SELECT TIPO_DOC FROM registros';
+              $resultado = $conexion->query($consulta);
+
+              // Generación de las opciones del datalist
+              while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)) {
+                echo '<option value="' . htmlspecialchars($fila['TIPO_DOC']) . '">';
+              }
+
+              // Cerrar la conexión
+              $conexion = null;
+            ?>
             </datalist>
           </div>
 
