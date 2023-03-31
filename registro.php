@@ -79,7 +79,12 @@ $apellido = $result['NOMBRES'];
       <div class="form-row"> 
             <div class="form-group col-md-6">
             <label for="TIPO_DOC">Documento:</label>
-            <input type="text" id="TIPO_DOC" name="TIPO_DOC" required><br>
+            <input type="text" list ="RD" id="TIPO_DOC" name="TIPO_DOC" required><br>
+            <datalist id="RD">
+            <option value="RESOLUCIÓN DIRECTORAL">
+            <option value="RESOLUCIÓN JEFATURAL">
+            <option value="RESOLUCIÓN ONP">
+            </datalist>
           </div>
 
             <div class="form-group col-md-6">
