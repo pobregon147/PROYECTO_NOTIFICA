@@ -17,7 +17,7 @@ $stmt->bindParam(':distrito', $distrito);
 $stmt->bindParam(':notificador', $notificador);
 $stmt->bindParam(':fecha_noti', $fecha_noti);
 $stmt->bindParam(':estado', $estado);
-$stmt->bindParam(':N_cARGOS', $id);
+$stmt->bindParam(':N_CARGOS', $id);
 $stmt->execute();
 
 // Redireccionar a la página anterior
