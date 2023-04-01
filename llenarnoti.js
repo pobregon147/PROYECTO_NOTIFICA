@@ -1,8 +1,8 @@
-function llenarNotificacion(notificador, fecha, estado, direccion, correoElectronico, distrito) {
-    document.getElementById('notificador').value = notificador;
-    document.getElementById('fecha').value = fecha;
-    document.getElementById('estado').value = estado;
-    document.getElementById('direccion').value = direccion;
-    document.getElementById('correoElectronico').value = correoElectronico;
-    document.getElementById('distrito').value = distrito;
+function llenarDatos(btn) {
+    var row = btn.parentNode.parentNode;
+    row.querySelector('td:nth-child(12)').textContent = 'PEDRO OBREGON'; // NOTIFICADOR
+    row.querySelector('td:nth-child(14)').textContent = new Date().toLocaleDateString(); // FECHA_NOTI
+    row.querySelector('td:nth-child(15)').textContent = 'NOTIFICADO'; // ESTADO
+    row.querySelector('td:nth-child(8)').textContent = 'CORREO ELECTRONICO'; // DIRECCION
+    row.querySelector('td:nth-child(9)').textContent = 'CORREO ELECTRONICO'; // DISTRITO
 }
