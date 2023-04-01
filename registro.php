@@ -235,7 +235,7 @@ $apellido = $result['NOMBRES'];
                 <td><?= $registro['RELACION'] ?></td>
                 <td><?= $registro['ESTADO'] ?></td>
                 <td><?= $registro['OBSERVACION'] ?></td>
-                <td><button id="registrarNotificacion">Notivirtual</button></td>
+                <td><button onclick="registrarNotificacion">Notivirtual</button></td>
             </tr>
         <?php endforeach ?>
     </tbody>
