@@ -1,32 +1,29 @@
 <?php
-require 'conexion.php';
-// Obtener los valores enviados por la petición
-$notificador = $_POST['notificador'];
-$fecha_noti = $_POST['fecha_noti'];
-$estado = $_POST['estado'];
+// Obtener los datos de la notificación del formulario
 $direccion = $_POST['direccion'];
 $distrito = $_POST['distrito'];
+$notificador = 'PEDRO OBREGON'; // valor fijo
+$fecha_noti = date('Y-m-d'); // fecha actual
+$estado = 'NOTIFICADO'; // valor fijo
 
+// Conectar a la base de datos
+require_once('conexion.php');
 
-try {
-    $conn = new PDO($database, $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// Preparar la consulta SQL
+$sql = "UPDATE registros SET DIRECCION = :direccion, DISTRITO = :distrito, NOTIFICADOR = :notificador, FECHA_NOTI = :fecha_noti, ESTADO = :estado WHERE id = :id";
 
-    // Realizar el registro en la base de datos
-    $stmt = $conn->prepare("INSERT INTO registros (NOTIFICADOR, FECHA_NOTI, ESTADO, DIRECCION, DISTRITO) VALUES (:notificador, :fecha_noti, :estado, :direccion, :distrito)");
-    $stmt->bindParam(':notificador', $notificador);
-    $stmt->bindParam(':fecha_noti', $fecha_noti);
-    $stmt->bindParam(':estado', $estado);
-    $stmt->bindParam(':direccion', $direccion);
-    $stmt->bindParam(':distrito', $distrito);
-    $stmt->execute();
+// Obtener el ID del registro a actualizar (pasado por el formulario)
+$id = $_POST['id'];
 
-    // Mostrar mensaje de éxito si el registro fue exitoso
-    echo "Notificación registrada con éxito";
-} catch(PDOException $e) {
-    // Mostrar mensaje de error si hubo algún problema con el registro
-    echo "Error: " . $e->getMessage();
-}
-$conn = null;
-?>
+// Ejecutar la consulta SQL
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':direccion', $direccion);
+$stmt->bindParam(':distrito', $distrito);
+$stmt->bindParam(':notificador', $notificador);
+$stmt->bindParam(':fecha_noti', $fecha_noti);
+$stmt->bindParam(':estado', $estado);
+$stmt->bindParam(':id', $id);
+$stmt->execute();
 
+// Redireccionar a la página anterior
+header('Location: ' . $_SERVER['HTTP_REFERER']);
