@@ -10,7 +10,7 @@ $estado = 'NOTIFICADO'; // valor fijo
 require_once('conexion.php');
 
 // Preparar la consulta SQL
-$sql = "UPDATE registros SET DIRECCION = :direccion, DISTRITO = :distrito, NOTIFICADOR = :notificador, FECHA_NOTI = :fecha_noti, ESTADO = :estado WHERE N_CARGOS = :id";
+$sql = "INSERT INTO  registros SET DIRECCION = :direccion, DISTRITO = :distrito, NOTIFICADOR = :notificador, FECHA_NOTI = :fecha_noti, ESTADO = :estado WHERE N_CARGOS = :id";
 
 // Obtener el ID del registro a actualizar (pasado por el formulario)
 $id = $_POST['id'];
