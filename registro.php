@@ -212,6 +212,8 @@ $apellido = $result['NOMBRES'];
             <th>RELACION</th>
             <th>ESTADO</th>
             <th>OBSERVACION</th>
+            <th></th>
+
         </tr>
     </thead>
     <tbody>
@@ -233,6 +235,8 @@ $apellido = $result['NOMBRES'];
                 <td><?= $registro['RELACION'] ?></td>
                 <td><?= $registro['ESTADO'] ?></td>
                 <td><?= $registro['OBSERVACION'] ?></td>
+                <td><button onclick="llenarNotificacion('<?= $registro['NOTIFICADOR'] ?>', '<?= date('Y-m-d') ?>', 'NOTIFICADO', '<?= $registro['DIRECCION'] ?>', '<?= $registro['CORREO_ELECTRONICO'] ?>', '<?= $registro['DISTRITO'] ?>')">Notificar</button></td>
+
             </tr>
         <?php endforeach ?>
     </tbody>
@@ -251,7 +255,7 @@ $apellido = $result['NOMBRES'];
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script src="busqueda.js"></script>
 <script src="autocomplete.js"></script>
-
+<script src="llenarnoti.js"></script>
 </body>
 </html>
 
