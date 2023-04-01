@@ -5,9 +5,9 @@ require 'conexion.php';
 // Obtener los datos de la notificación del formulario
 $direccion = $_POST['direccion'];
 $distrito = $_POST['distrito'];
-$notificador = 'PEDRO OBREGON'; // valor fijo
-$fecha_noti = date('Y-m-d'); // fecha actual
-$estado = 'NOTIFICADO'; // valor fijo
+$notificador = $_POST['notificador'];
+$fecha_noti = $_POST['fecha_noti'];
+$estado = $_POST['estado'];
 $id = $_POST['N_CARGOS'];
 
 // Ejecutar la consulta SQL

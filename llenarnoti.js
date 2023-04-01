@@ -11,11 +11,11 @@ function registrarNotificacion() {
     
     // Crear un objeto con los datos a enviar
     const datos = {
-      correo: correo,
+      direccion: direccion,
       distrito: distrito,
-      notificador: 'PEDRO OBREGON',
+      notificador: notificador,
       fechaNoti: fechaActual,
-      estado: 'NOTIFICADO'
+      estado: estado
     };
     
     // Enviar los datos al servidor utilizando AJAX
