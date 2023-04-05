@@ -1,6 +1,7 @@
 <?php
 require 'conexion.php';
 require 'getCodigos.php';
+require 'tabla.php';
 ?>
 
 <!DOCTYPE html>
