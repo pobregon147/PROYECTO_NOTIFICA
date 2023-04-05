@@ -1,26 +1,6 @@
 <?php
 require 'conexion.php';
 require 'getCodigos.php';
-
-try {
-    $stmt = $conn->query("SELECT * FROM registros");
-    $registros = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
-
-$N_CARGOS = $_POST['N_CARGOS']; // suponiendo que estás pasando el ID desde el formulario
-$NUM_RD = $_POST['NUM_RD'];
-$NOMBRES = $_POST['NOMBRES'];
-
-$stmt = $conn->prepare("SELECT NUM_RD, NOMBRES FROM registros WHERE N_CARGOS = :N_CARGOS");
-$stmt->bindParam(':N_CARGOS', $N_CARGOS);
-$stmt->execute();
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-$nombre = $result['NUM_RD'];
-$apellido = $result['NOMBRES'];
 ?>
 
 <!DOCTYPE html>
@@ -143,15 +123,6 @@ $apellido = $result['NOMBRES'];
             <input type="num" id="N_CARGOS" name="N_CARGOS" required><br>
         </div>
       </div>
-      
-      <div class="form-row ">
-        <div class="form-group col-md-6">
-            <?php if(isset($nombre) && isset($apellido)): ?>
-            <input type="text" id="nombre" name="nombre" required><?php echo $nombre ?><br>
-            <input type="text" id="apellido" name="apellido" required><?php echo $apellido ?><br>
-            <?php endif; ?>
-        </div>
-      </div>
 
       <div class="form-row">
             <div class="form-group col-md-6">
@@ -192,8 +163,7 @@ $apellido = $result['NOMBRES'];
 </div>
 
 <input type="text" id="searchInput" placeholder="Buscar por nombre"><br>
-<label for="TIPO_DOC">Documento:</label>
-            <input type="text" id="TIPO_DOC" name="TIPO_DOC" required><br>
+
 <table id="searchResults">
     <thead>
         <tr>
@@ -242,25 +212,9 @@ $apellido = $result['NOMBRES'];
     </tbody>
 </table>
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/v/bs4/dt-1.13.4/datatables.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="external/jquery/jquery.js"></script>
-<script src="jquery-ui.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<script src="busqueda.js"></script>
-<script>$(document).ready(function() {
-    var tipo_doc_list = <?php echo json_encode($tipo_doc_list); ?>;
-    $('#TIPO_DOC').autocomplete({
-        source: tipo_doc_list
-    });
-});</script>
-<script src="llenarnoti.js"></script>
+<?php include 'all-scripts.php'; ?>
+
+</head>
 </body>
 </html>
 

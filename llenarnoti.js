@@ -3,8 +3,10 @@ function registrarNotificacion() {
     const fila = event.target.parentNode.parentNode;
     
     // Obtener los datos necesarios de la fila
-    const correo = fila.cells[7].innerText;
+    const direccion = fila.cells[7].innerText;
     const distrito = fila.cells[8].innerText;
+    const notificador = fila.cells[11].innerText;
+    const estado = fila.cells[14].innerText;
     
     // Obtener la fecha actual
     const fechaActual = new Date().toISOString().slice(0, 19).replace('T', ' ');
@@ -14,7 +16,7 @@ function registrarNotificacion() {
       direccion: direccion,
       distrito: distrito,
       notificador: notificador,
-      fechaNoti: fechaActual,
+      fecha_noti: fechaActual,
       estado: estado
     };
     
