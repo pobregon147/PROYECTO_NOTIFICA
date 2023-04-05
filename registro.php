@@ -1,5 +1,6 @@
 <?php
 require 'conexion.php';
+require 'getCodigos.php';
 
 try {
     $stmt = $conn->query("SELECT * FROM registros");
@@ -253,7 +254,12 @@ $apellido = $result['NOMBRES'];
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script src="busqueda.js"></script>
-<script src="autocomplete.js"></script>
+<script>$(document).ready(function() {
+    var tipo_doc_list = <?php echo json_encode($tipo_doc_list); ?>;
+    $('#TIPO_DOC').autocomplete({
+        source: tipo_doc_list
+    });
+});</script>
 <script src="llenarnoti.js"></script>
 </body>
 </html>
