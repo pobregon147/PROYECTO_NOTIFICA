@@ -5,6 +5,9 @@ function registrarNotificacion() {
   // Obtener los datos necesarios de la fila
   const correo = fila.cells[7].innerText;
   const distrito = fila.cells[8].innerText;
+  const notificador = fila.cells[11].innerText;
+  const estado = fila.cells[14].innerText;
+
   
   // Obtener la fecha actual
   const fechaActual = new Date().toLocaleDateString();
@@ -13,9 +16,9 @@ function registrarNotificacion() {
   const datos = {
     direccion: correo,
     distrito: distrito,
-    notificador: 'PEDRO OBREGON',
+    notificador: notificador,
     fecha_noti: fechaActual,
-    estado: 'NOTIFICADO'
+    estado: estado
   };
   
   // Enviar los datos al servidor utilizando AJAX

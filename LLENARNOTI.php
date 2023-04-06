@@ -2,16 +2,16 @@
 // Obtener los datos de la notificación del formulario
 $direccion = $_POST['direccion'];
 $distrito = $_POST['distrito'];
-$notificador = 'PEDRO OBREGON'; // valor fijo
+$notificador = $_POST['notificador']; // valor fijo
 $fecha_noti = $_POST['fecha_noti']; // fecha actual
-$estado = 'NOTIFICADO'; // valor fijo
+$estado = $_POST['estado']; // valor fijo
 
 // Conectar a la base de datos
 require_once('conexion.php');
 
 // Preparar la consulta SQL
 $sql = "UPDATE registros SET DIRECCION = :direccion, DISTRITO = :distrito, NOTIFICADOR = :notificador, FECHA_NOTI = :fecha_noti, ESTADO = :estado WHERE N_CARGOS = :n_cargos";
-echo $sql; // Imprime la consulta SQL en pantalla
+
 // Obtener el ID del registro a actualizar (pasado por el formulario)
 $n_cargos = $_POST['n_cargos'];
 
