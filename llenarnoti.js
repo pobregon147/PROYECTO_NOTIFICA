@@ -7,23 +7,18 @@ function registrarNotificacion() {
   const distrito = fila.cells[8].innerText;
   const notificador = fila.cells[11].innerText;
   const estado = fila.cells[14].innerText;
-
-  
-  // Obtener la fecha actual
-  const fechaActual = new Date().toLocaleDateString();
   
   // Crear un objeto con los datos a enviar
   const datos = {
     direccion: correo,
     distrito: distrito,
     notificador: notificador,
-    fecha_noti: fechaActual,
     estado: estado
   };
   
   // Enviar los datos al servidor utilizando AJAX
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', 'LLENARNOTI.php', true);
+  xhr.open('POST', 'notivirtual.php', true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onreadystatechange = function() {
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
@@ -37,7 +32,6 @@ function registrarNotificacion() {
   fila.cells[7].innerText = 'CORREO';
   fila.cells[8].innerText = 'CORREO';
   fila.cells[11].innerText = 'PEDRO OBREGON';
-  fila.cells[12].innerText = fechaActual;
   fila.cells[14].innerText = 'NOTIFICADO';
 }
 

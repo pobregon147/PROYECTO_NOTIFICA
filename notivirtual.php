@@ -3,14 +3,13 @@
 $direccion = $_POST['direccion'];
 $distrito = $_POST['distrito'];
 $notificador = $_POST['notificador']; // valor fijo
-$fecha_noti = $_POST['fecha_noti']; // fecha actual
 $estado = $_POST['estado']; // valor fijo
 
 // Conectar a la base de datos
 require_once('conexion.php');
 
 // Preparar la consulta SQL
-$sql = "UPDATE registros SET DIRECCION = :direccion, DISTRITO = :distrito, NOTIFICADOR = :notificador, FECHA_NOTI = :fecha_noti, ESTADO = :estado WHERE N_CARGOS = :n_cargos";
+$sql = "UPDATE registros SET DIRECCION = :direccion, DISTRITO = :distrito, NOTIFICADOR = :notificador, ESTADO = :estado WHERE N_CARGOS = :n_cargos";
 
 // Obtener el ID del registro a actualizar (pasado por el formulario)
 $n_cargos = $_POST['n_cargos'];
@@ -20,7 +19,6 @@ $stmt = $conn->prepare($sql);
 $stmt->bindParam(':direccion', $direccion);
 $stmt->bindParam(':distrito', $distrito);
 $stmt->bindParam(':notificador', $notificador);
-$stmt->bindParam(':fecha_noti', $fecha_noti);
 $stmt->bindParam(':estado', $estado);
 $stmt->bindParam(':n_cargos', $n_cargos);
 $stmt->execute();

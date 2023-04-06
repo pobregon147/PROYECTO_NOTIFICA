@@ -129,7 +129,7 @@ require 'tabla.php';
       <div class="form-row">
             <div class="form-group col-md-6">
             <label for="NOTIFICADOR">Notificador:</label>
-            <input type="text" id="direNOTIFICADORccion" name="NOTIFICADOR" required><br>
+            <input type="text" id="NOTIFICADOR" name="NOTIFICADOR" required><br>
             </div>
 
             <div class="form-group col-md-6">
@@ -153,11 +153,11 @@ require 'tabla.php';
       <div class="form-row">        
             <div class="form-group col-md-6">
             <label for="OBSERVACION">Observacion:</label>
-            <input type="text" id="OBSERVACION" name="OBSERVACION" required><br>
+            <input type="text" id="OBSERVACION" name="OBSERVACION"><br>
             </div>
       </div>   
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="submit" value="Registrar" class="btn btn-primary">Registrar</button>
+            <button type="submit" value="Registrar" class="btn btn-primary">Registrar</button>        
       </form>
       </div>
     </div>
