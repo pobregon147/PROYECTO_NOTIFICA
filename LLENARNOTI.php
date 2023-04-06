@@ -3,7 +3,7 @@
 $direccion = $_POST['direccion'];
 $distrito = $_POST['distrito'];
 $notificador = 'PEDRO OBREGON'; // valor fijo
-$fecha_noti = date('Y-m-d'); // fecha actual
+$fecha_noti = $_POST['fecha_noti']; // fecha actual
 $estado = 'NOTIFICADO'; // valor fijo
 
 // Conectar a la base de datos
