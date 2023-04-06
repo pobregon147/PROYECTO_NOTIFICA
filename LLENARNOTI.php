@@ -11,7 +11,7 @@ require_once('conexion.php');
 
 // Preparar la consulta SQL
 $sql = "UPDATE registros SET DIRECCION = :direccion, DISTRITO = :distrito, NOTIFICADOR = :notificador, FECHA_NOTI = :fecha_noti, ESTADO = :estado WHERE N_CARGOS = :n_cargos";
-
+echo $sql; // Imprime la consulta SQL en pantalla
 // Obtener el ID del registro a actualizar (pasado por el formulario)
 $n_cargos = $_POST['n_cargos'];
 
