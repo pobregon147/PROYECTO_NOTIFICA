@@ -7,7 +7,7 @@ function registrarNotificacion() {
   const distrito = fila.cells[8].innerText;
   
   // Obtener la fecha actual
-  const fechaActual = new Date().toISOString().slice(0, 19).replace('T', ' ');
+  const fechaActual = new Date().toLocaleDateString();
   
   // Crear un objeto con los datos a enviar
   const datos = {
