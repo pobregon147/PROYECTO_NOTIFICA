@@ -18,3 +18,9 @@
         source: tipo_doc_list
     });
 });</script>
+
+<script src="DataTables/datatables.min.js"></script>
+<script>$(document).ready(function() {
+    $('#searchResults').DataTable();
+} );
+</script>

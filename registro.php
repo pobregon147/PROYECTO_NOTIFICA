@@ -11,6 +11,7 @@ require 'tabla.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CARGO DE NOTIFICACIONES</title>
+    <link href="DataTables/datatables.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link href="https://cdn.datatables.net/v/bs4/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/jquery-ui-1.13.2.custom/jquery-ui.min.css">
@@ -165,7 +166,7 @@ require 'tabla.php';
 
 <input type="text" id="searchInput" placeholder="Buscar por nombre"><br>
 
-<table id="searchResults">
+<table id="searchResults" class="dataTable">
     <thead>
         <tr>
             <th>N_CARGOS</th>
