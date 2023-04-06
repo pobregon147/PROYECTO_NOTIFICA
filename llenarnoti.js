@@ -11,10 +11,10 @@ function registrarNotificacion() {
   
   // Crear un objeto con los datos a enviar
   const datos = {
-    correo: correo,
+    direccion: correo,
     distrito: distrito,
     notificador: 'PEDRO OBREGON',
-    fechaNoti: fechaActual,
+    fecha_noti: fechaActual,
     estado: 'NOTIFICADO'
   };
   
